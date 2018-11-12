@@ -1,6 +1,6 @@
-## What's included
+# What's included
 
-### configs &amp; dotfiles
+## configs &amp; dotfiles
 
 **Dotenv**
 `.env`
@@ -26,7 +26,9 @@ The root gulpfile uses [require-dir](https://www.npmjs.com/package/require-dir) 
 **package.json**
 I've added a custom `exa` property where I'm storing cdn endpoints.
 
-## sass
+---
+
+# sass
 
 **Key takeaways**
 * sass follows this [module definition technique](http://thesassway.com/intermediate/a-standard-module-definition-for-sass)
@@ -62,9 +64,36 @@ If your component introduces new functions.
 
 ### Naming sass vars
 
-I tried to start with [bem](http://getbem.com/introduction/) as a model.
+> **Note** sass var naming isn't resolved. Need some help here.
 
-```scss
-$color__text : #222;
-$color__text--muted : #666;
+**Naming objectives**
+* Names should indicate the type of variable. Example `$color__text`;
+* Names should indicate whether or not the var is local (component-level) or at the system level. Example `$system__font` vs `$dialog__font`;
+* Like [bem](http://getbem.com/introduction/) it would be nice to have a naming convention that allows for calling out variations. Example `$color__text--disabled`
+
+**Where naming becomes difficult**
+Typing vars was easy...
+
+```sass
+$color__text;
 ```
+
+Declaring local vars was easy...
+
+```sass
+$dialog__shadow;
+```
+
+Setting modifiers was easy...
+
+```sass
+$dialog__text--disabled;
+```
+
+...but how do you declare a type on a component-level var without the convention getting clunky.
+
+```sass
+$dialog__color__text--disabled;
+```
+
+...so now what? Need other ideas.
