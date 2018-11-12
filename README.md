@@ -128,6 +128,8 @@ Custom Elements [lifecycle callbacks](https://developer.mozilla.org/en-US/docs/W
 
 Custom Elements info from [Google](https://developers.google.com/web/fundamentals/web-components/customelements)
 
+[Custom Elements Everywhere](https://custom-elements-everywhere.com/) tracks compatibility with .js frameworks along with issues. They have a github repo that shows their testing criteria.
+
 Custom Elements [caniuse](https://caniuse.com/#search=custom%20elements) **Note** on caniuse that there is a v0 and v1 spec for custom elements. We're using v1.
 
 Also, the support issues differentiate between **Autonomous Custom Elements** and **Customized built-in elements**. **Autonomous** means you're defining a new tag, **Customized** means you're extending the capabilities of an existing tag (eg. button or img). **Customized** isn't widely supported and we should avoid using it.
