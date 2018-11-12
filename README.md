@@ -1,5 +1,21 @@
 # What's included
 
+## docker
+
+> Prerequisites: [docker](https://store.docker.com/editions/community/docker-ce-desktop-mac)
+
+1. Build the docker image and container:
+```sh
+. build.sh
+```
+
+2. Start the container and attach to it:
+```sh
+docker start exa-component-template && docker attach exa-component-template
+```
+
+3. **Done** - You're terminal'd into your Docker container to do your work.
+
 ## configs &amp; dotfiles
 
 **Dotenv**
