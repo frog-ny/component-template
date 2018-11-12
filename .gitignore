@@ -1,0 +1,15 @@
+# osx noise
+.DS_Store
+
+# svn & cvs
+.svn
+CVS
+
+*.log
+node_modules
+bower_components
+.tmp
+
+# project specific
+.env
+testing

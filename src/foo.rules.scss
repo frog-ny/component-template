@@ -1,0 +1,13 @@
+@mixin foo-rules(){
+  exa-foo{
+    display: block;
+    background-color: $foo__background-color;
+    width: $foo__size;
+    height: $foo__size;
+
+    @include viewport-large(){
+      display: none;
+    }
+    
+  }
+}
