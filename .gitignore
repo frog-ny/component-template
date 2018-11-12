@@ -13,3 +13,4 @@ bower_components
 # project specific
 .env
 testing
+dist

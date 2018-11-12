@@ -35,7 +35,7 @@ function (_HTMLElement) {
   _createClass(Foo, null, [{
     key: "observedAttributes",
     get: function get() {
-      return ['data-message'];
+      return ['value'];
     }
   }]);
 
@@ -45,44 +45,58 @@ function (_HTMLElement) {
     _classCallCheck(this, Foo);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Foo).call(this));
-    _this.message = 'default';
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.increment = _this.increment.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Foo, [{
     key: "connectedCallback",
     value: function connectedCallback() {
-      //https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#Using_the_lifecycle_callbacks
-      // !note this callback may happen before the element's contents have been fully parsed.
-      this.attachEventListeners();
+      this.addEventListener('click', this.increment);
+
+      if (!this.hasAttribute('value')) {
+        this.setAttribute('value', 0);
+      }
+
+      this.innerHTML = "\n      <div class='counter-wrapper'>\n        <button class='counter-button' tabindex='0' increment>Increment</button>\n        <span class='counter-count'></span>\n      </div>\n    ";
+      this.incrementBtn = this.querySelector('[increment]');
+      this.displayVal = this.querySelector('span');
+      this.displayVal.innerText = this.value;
     }
   }, {
     key: "attributeChangedCallback",
     value: function attributeChangedCallback(name, oldValue, newValue) {
-      if (name === 'data-message') {
-        this.message = newValue;
+      if (this.displayVal !== undefined) {
+        this.displayVal.innerText = this.value;
       }
-    }
-  }, {
-    key: "attachEventListeners",
-    value: function attachEventListeners() {
-      this.addEventListener('click', this.handleClick, false);
     }
   }, {
     key: "disconnectedCallback",
     value: function disconnectedCallback() {
-      this.detachEventListeners();
+      this.removeEventListener('click', this.increment);
     }
   }, {
-    key: "detachEventListeners",
-    value: function detachEventListeners() {
-      this.removeEventListener('click', this.handleClick, false);
+    key: "increment",
+    value: function increment() {
+      var step = +this.step || 1;
+      var newValue = +this.value + step;
+      this.value = +newValue;
     }
   }, {
-    key: "handleClick",
-    value: function handleClick(e) {
-      console.log(this.message);
+    key: "value",
+    get: function get() {
+      return this.getAttribute('value');
+    },
+    set: function set(newValue) {
+      this.setAttribute('value', newValue);
+    }
+  }, {
+    key: "step",
+    get: function get() {
+      return this.getAttribute('step');
+    },
+    set: function set(newValue) {
+      this.setAttribute('step', newValue);
     }
   }]);
 

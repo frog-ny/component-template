@@ -5,8 +5,6 @@
   "rules": {
     "scss/at-mixin-argumentless-call-parentheses" : "always",
     "scss/selector-no-redundant-nesting-selector" : true,
-
-    "color-no-hex": true,
     "string-quotes": "single",
     "selector-max-id": 0
   }
