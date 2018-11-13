@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/exa-sample.element.js",
   "scripts": {
-    "test": "gulp test",
+    "test": "./node_modules/.bin/wdio test/conf/test.conf.js",
     "build": "gulp",
     "deploy": "gulp deploy"
   },
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
+    "assert": "^1.4.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
@@ -57,8 +58,11 @@
     "gulp-stylelint": "^8.0.0",
     "require-dir": "^1.1.0",
     "run-sequence": "^2.2.1",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "stylelint": "^9.8.0",
-    "stylelint-scss": "^3.4.0"
+    "stylelint-scss": "^3.4.0",
+    "wdio-mocha-framework": "^0.6.4",
+    "webdriverio": "^4.14.0"
   },
   "dependencies": {
     "@exa/common": "^0.10.1"
