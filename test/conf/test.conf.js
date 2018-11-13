@@ -9,12 +9,38 @@ exports.config = {
     './test/wd-test.js'
   ],
   exclude: [],
-
+/*
   capabilities: [{
     browser: 'chrome',
     name: 'single_test',
     build: 'webdriver-browserstack'
-  }],
+  },
+  {
+    browser: 'chrome',
+    name: 'single_test',
+    build: 'webdriver-browserstack'
+  }
+],*/
+capabilities: [{
+  browser: 'chrome'
+},{
+  browser: 'firefox'
+},{
+  'os': 'Windows',
+  'os_version': '10',
+  'browser': 'IE',
+  'browser_version': '11.0',
+  'resolution': '1024x768'
+},{
+  browser: 'safari'
+},
+{
+  'os': 'Windows',
+  'os_version': '10',
+  'browser': 'Edge',
+  'browser_version': '17.0',
+  'resolution': '1024x768'
+}],
 
   logLevel: 'verbose',
   coloredLogs: true,
