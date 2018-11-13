@@ -6,7 +6,6 @@
   "scripts": {
     "test": "gulp test",
     "build": "gulp",
-    "postbuild": "rollup -c",
     "deploy": "gulp deploy"
   },
   "repository": {

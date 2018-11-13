@@ -1,5 +1,5 @@
 class Foo extends HTMLElement {
-  
+
   static get observedAttributes() {
     return ['value'];
   }
