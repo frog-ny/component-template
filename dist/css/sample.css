@@ -97,3 +97,23 @@ exa-collapse[state='closed'] {
 
 exa-collapse[state='open'] {
   display: block; }
+
+exa-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  backface-visibility: hidden; }
+  exa-dropdown .exa-dropdown {
+    position: absolute;
+    z-index: 1010;
+    box-sizing: border-box;
+    display: none;
+    min-width: 200px;
+    padding: 1rem 1rem;
+    margin-top: 1rem;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(17, 17, 17, 0.15); }
+  exa-dropdown[expanded] > .exa-dropdown {
+    display: block; }
+  exa-dropdown .exa-dropdown-item {
+    display: block; }

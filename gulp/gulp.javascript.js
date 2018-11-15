@@ -45,8 +45,15 @@ gulp.task('js:module', function(cb) {
 });
 
 gulp.task('js',['js:clean'], function(cb) {
-  gulp.src('./src/**/*.js')
+  gulp.src(['./src/**/*.js', '!./src/**/exa-basic.js'])
     .pipe(header('\/\* <%= name %> version <%= version %> \*\/\n', {name: pkg.name, version: pkg.version}))
+    .pipe(modifyFile((content, path, file) => {
+      var start = '';
+      if(content.indexOf('HTMLBaseElement')) {
+        start = fs.readFileSync('src/exa-basic.js');
+      }
+      return `${start}${content}`
+    }))
     .pipe(gulp.dest('./dist/js'))
 
     .pipe(minify({ext:{min:'.min.js'}}))

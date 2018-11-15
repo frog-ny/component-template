@@ -1,48 +1,39 @@
-class Collapse extends HTMLElement {
+class CollapseElement extends HTMLBaseElement {
 
   static get observedAttributes() {
-    return ['id', 'state'];
+    return ['state'];
   }
 
-  get id() { return this.getAttribute('id'); }
-  set id(value) { return this.setAttribute('id', value); }
   get state() { return this.getAttribute('state'); }
   set state(value) { return this.setAttribute('state', value); }
 
   constructor(){
     super();
-    this.eventListenerAdded = false;
+    // this.eventListenerAdded = false;
     this.linked = [];
   }
 
   connectedCallback() {
+    super.setup();
+  }
+
+  childrenAvailableCallback() {
+    this.linked = [].slice.call(document.querySelectorAll(`[href="#${this.id}"],[data-target="#${this.id}"]`));
+    this.linked.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById(this.id).toggle();
+      });
+    });
+
+    this.parsed = true;
   }
 
   disconnectedCallback() {
     this.linked.forEach((element) => {
       element.removeEventListener('click', this);
     });
-  }
-
-  attributeChangedCallback(attr, oldValue, newValue) {
-    switch (attr) {
-      case 'id':
-        if(this.eventListenerAdded) {
-          return;
-        }
-        this.linked = [].slice.call(document.querySelectorAll(`[href="#${this.id}"],[data-target="#${this.id}"]`));
-        this.linked.forEach((element) => {
-          element.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            document.getElementById(this.id).toggle();
-          });
-        });
-        this.eventListenerAdded = true;
-        break;
-      default:
-        break;
-    }
   }
 
   toggle() {
@@ -57,4 +48,4 @@ class Collapse extends HTMLElement {
   }
 }
 
-customElements.define('exa-collapse', Collapse);
+customElements.define('exa-collapse', CollapseElement);

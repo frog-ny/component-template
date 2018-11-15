@@ -1,0 +1,28 @@
+@mixin dropdown-rules() {
+  exa-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    backface-visibility: hidden;
+
+    .exa-dropdown {
+      position: absolute;
+      z-index: $dropdown__index-z;
+      box-sizing: border-box;
+      display: none;
+      min-width: $dropdown__width-min;
+      padding: $dropdown__padding-y $dropdown__padding-x;
+      margin-top: $dropdown__margin-top;
+      background: $dropdown__color-background;
+      box-shadow: $dropdown__box-shadow;
+    }
+
+    &[expanded] > .exa-dropdown {
+      display: block;
+    }
+
+    .exa-dropdown-item {
+      display: block;
+    }
+  }
+}

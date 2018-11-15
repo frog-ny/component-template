@@ -1,4 +1,4 @@
-class Alert extends HTMLElement {
+class AlertElement extends HTMLElement {
   /* Attributes to monitor */
   static get observedAttributes() { return ['type', 'dismiss', 'acknowledge', 'href', 'auto-dismiss', 'position', 'textClose', 'textDismiss', 'textAcknowledge']; }
   get type() { return this.getAttribute('type'); }
@@ -173,4 +173,4 @@ class Alert extends HTMLElement {
   }
 }
 
-customElements.define('exa-alert', Alert);
+customElements.define('exa-alert', AlertElement);
