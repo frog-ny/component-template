@@ -1,0 +1,83 @@
+@mixin alert-rules() {
+  exa-alert {
+    display: block;
+    min-width: 250px;
+    min-height: 2.2rem;
+    padding: $alert__padding-y $alert__padding-x;
+    margin-bottom: $alert__margin-bottom;
+    border: $alert__border-width solid transparent;
+    border-radius: $alert__border-radius;
+    opacity: 0;
+    transition: $alert__transition;
+
+    &.exa-alert--show {
+      opacity: 1;
+    }
+
+    .exa-alert--close, .exa-alert-button--close {
+      position: relative;
+      top: -$alert__padding-y;
+      right: -$alert__padding-x;
+      padding: .2rem 1rem;
+      color: inherit;
+    }
+
+    .exa-alert--close {
+      font-size: $alert__close-font-size;
+      font-weight: $alert__close-font-weight;
+      line-height: 1;
+      text-shadow: $alert__close-text-shadow;
+    }
+
+    .exa-alert--close, .exa-alert-button--close {
+      float: right;
+      color: $alert__close-color;
+      background: transparent;
+      border: 0;
+      opacity: .5;
+
+      &:hover,
+      &:focus {
+        color: $alert__close-color;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: .75;
+      }
+    }
+
+    button.exa-alert-button--close {
+      padding-top: .75rem;
+      font-size: 100%;
+      line-height: 1.15;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+    }
+  }
+
+  exa-alert[position='top-left'] {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
+  exa-alert[position='top-center'] {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  exa-alert[position='top-right'] {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+  @each $color, $map in $alert__colors {
+    exa-alert[type='#{$color}'] {
+      color: map-get($map, color);
+      background-color: map-get($map, background-color);
+      border-color: map-get($map, border-color);
+    }
+  }
+}

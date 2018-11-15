@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/exa-sample.element.js",
   "scripts": {
+    "docker:start": "docker start exa-component-template && docker attach exa-component-template",
     "test": "gulp test",
     "build": "gulp",
     "postbuild": "rollup -c",

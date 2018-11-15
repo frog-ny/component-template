@@ -1,2 +1,6 @@
+@import '../node_modules/@exa/common/src/sass/import';
+
 @import 'foo.variables';
 @import 'foo.rules';
+@import 'alert.variables';
+@import 'alert.rules';

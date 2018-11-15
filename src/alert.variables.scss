@@ -1,0 +1,37 @@
+$alert__padding-y: .5rem;
+$alert__padding-x: 1.25rem;
+$alert__margin-bottom: 1rem;
+$alert__border-radius: 0;
+$alert__border-width: 1px;
+$alert__transition: opacity .15s linear;
+$alert__close-font-size: 1.5rem;
+$alert__close-font-weight: bold;
+$alert__close-text-shadow: 0 1px 0 $color-palette__white;
+$alert__close-color: $color-palette__black;
+$alert__colors: (
+  primary: (
+    color: #10467d,
+    background-color: #d2e7fc,
+    border-color: #c0ddfb,
+  ),
+  secondary: (
+    color: #464a4e,
+    background-color: #e7e8ea,
+    border-color: #dddfe2,
+  ),
+  success: (
+    color: #1a6d4e,
+    background-color: #d6f6ea,
+    border-color: #c6f2e2,
+  ),
+  warning: (
+    color: #82532f,
+    background-color: #feecde,
+    border-color: #fee4d1,
+  ),
+  danger: (
+    color: #7d2a39,
+    background-color: #fcdce2,
+    border-color: #fbced6,
+  )
+);

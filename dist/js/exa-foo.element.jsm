@@ -1,6 +1,6 @@
 /* @exa/sample version 0.0.0 */
 class Foo extends HTMLElement {
-  
+
   static get observedAttributes() {
     return ['value'];
   }

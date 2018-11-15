@@ -7,3 +7,87 @@ exa-foo {
   @media (min-width: 1025px) {
     exa-foo {
       display: none; } }
+
+exa-alert {
+  display: block;
+  min-width: 250px;
+  min-height: 2.2rem;
+  padding: 0.5rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity 0.15s linear; }
+  exa-alert.exa-alert--show {
+    opacity: 1; }
+  exa-alert .exa-alert--close, exa-alert .exa-alert-button--close {
+    position: relative;
+    top: -0.5rem;
+    right: -1.25rem;
+    padding: .2rem 1rem;
+    color: inherit; }
+  exa-alert .exa-alert--close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 1px 0 #fff; }
+  exa-alert .exa-alert--close, exa-alert .exa-alert-button--close {
+    float: right;
+    color: #111;
+    background: transparent;
+    border: 0;
+    opacity: .5; }
+    exa-alert .exa-alert--close:hover, exa-alert .exa-alert--close:focus, exa-alert .exa-alert-button--close:hover, exa-alert .exa-alert-button--close:focus {
+      color: #111;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .75; }
+  exa-alert button.exa-alert-button--close {
+    padding-top: .75rem;
+    font-size: 100%;
+    line-height: 1.15;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none; }
+
+exa-alert[position='top-left'] {
+  position: fixed;
+  top: 10px;
+  left: 10px; }
+
+exa-alert[position='top-center'] {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%); }
+
+exa-alert[position='top-right'] {
+  position: fixed;
+  top: 10px;
+  right: 10px; }
+
+exa-alert[type='primary'] {
+  color: #10467d;
+  background-color: #d2e7fc;
+  border-color: #c0ddfb; }
+
+exa-alert[type='secondary'] {
+  color: #464a4e;
+  background-color: #e7e8ea;
+  border-color: #dddfe2; }
+
+exa-alert[type='success'] {
+  color: #1a6d4e;
+  background-color: #d6f6ea;
+  border-color: #c6f2e2; }
+
+exa-alert[type='warning'] {
+  color: #82532f;
+  background-color: #feecde;
+  border-color: #fee4d1; }
+
+exa-alert[type='danger'] {
+  color: #7d2a39;
+  background-color: #fcdce2;
+  border-color: #fbced6; }
