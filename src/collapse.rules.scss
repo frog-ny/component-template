@@ -1,0 +1,9 @@
+@mixin collapse-rules() {
+  exa-collapse[state='closed'] {
+    display: none;
+  }
+
+  exa-collapse[state='open'] {
+    display: block;
+  }
+}

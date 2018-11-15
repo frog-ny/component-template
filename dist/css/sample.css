@@ -91,3 +91,9 @@ exa-alert[type='danger'] {
   color: #7d2a39;
   background-color: #fcdce2;
   border-color: #fbced6; }
+
+exa-collapse[state='closed'] {
+  display: none; }
+
+exa-collapse[state='open'] {
+  display: block; }
