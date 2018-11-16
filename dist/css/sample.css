@@ -386,3 +386,123 @@ exa-switch[type='danger'] .switcher.active {
     box-shadow: 0 0 0 10px rgba(66, 133, 244, 0); }
   100% {
     box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); } }
+
+exa-tooltip {
+  position: relative;
+  display: inline-block; }
+  exa-tooltip button {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-family: serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.4rem;
+    color: #fff;
+    background: #1c3d5c;
+    border: 0;
+    border-radius: 50%; }
+  exa-tooltip .toggletip-bubble {
+    position: absolute;
+    z-index: 1040;
+    display: inline-block;
+    width: 14rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    color: #fff;
+    background: #222;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    transition: all ease-in;
+    animation-duration: 0.3s; }
+    exa-tooltip .toggletip-bubble::after {
+      position: absolute;
+      top: 0.6rem;
+      right: 100%;
+      width: 0;
+      height: 0;
+      content: '';
+      border-style: solid; }
+    exa-tooltip .toggletip-bubble.top {
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 0.6rem;
+      transform: translate(-50%, 0);
+      animation-name: toggletip-fadeInTop; }
+      exa-tooltip .toggletip-bubble.top::after {
+        top: 100%;
+        bottom: auto;
+        left: 50%;
+        border-color: #222 transparent transparent;
+        border-width: 6px 6px 0;
+        transform: translateX(-50%); }
+    exa-tooltip .toggletip-bubble.left {
+      top: 50%;
+      right: 100%;
+      margin-right: 0.6rem;
+      transform: translate(0, -50%);
+      animation-name: toggletip-fadeInLeft; }
+      exa-tooltip .toggletip-bubble.left::after {
+        top: 50%;
+        bottom: auto;
+        left: 100%;
+        border-color: transparent transparent transparent #222;
+        border-width: 6px 0 6px 6px;
+        transform: translateY(-50%); }
+    exa-tooltip .toggletip-bubble.right {
+      top: 50%;
+      left: 100%;
+      margin-left: 0.6rem;
+      transform: translate(0, -50%);
+      animation-name: toggletip-fadeInRight; }
+      exa-tooltip .toggletip-bubble.right::after {
+        top: 50%;
+        right: 100%;
+        bottom: auto;
+        border-color: transparent #222 transparent transparent;
+        border-width: 6px 6px 6px 0;
+        transform: translateY(-50%); }
+    exa-tooltip .toggletip-bubble.bottom {
+      top: 100%;
+      left: 50%;
+      margin-top: 0.6rem;
+      transform: translate(-50%, 0);
+      animation-name: toggletip-fadeInBottom; }
+      exa-tooltip .toggletip-bubble.bottom::after {
+        top: -6px;
+        left: 50%;
+        border-color: transparent transparent #222;
+        border-width: 0 6px 6px;
+        transform: translateX(-50%); }
+
+@keyframes toggletip-fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate(-10px, -50%); }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%); } }
+
+@keyframes toggletip-fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate(10px, -50%); }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%); } }
+
+@keyframes toggletip-fadeInTop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px); }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0); } }
+
+@keyframes toggletip-fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px); }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0); } }
