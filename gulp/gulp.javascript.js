@@ -49,7 +49,7 @@ gulp.task('js',['js:clean'], function(cb) {
     .pipe(header('\/\* <%= name %> version <%= version %> \*\/\n', {name: pkg.name, version: pkg.version}))
     .pipe(modifyFile((content, path, file) => {
       var start = '';
-      if(content.indexOf('HTMLBaseElement')) {
+      if(content.indexOf('HTMLBaseElement') > 0) {
         start = fs.readFileSync('src/exa-basic.js');
       }
       return `${start}${content}`
