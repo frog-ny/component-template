@@ -290,3 +290,99 @@ exa-modal {
   left: 0;
   z-index: 1040;
   background-color: #000; }
+
+exa-switch {
+  box-sizing: border-box;
+  display: block;
+  height: 28px; }
+  exa-switch .switcher {
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 62px;
+    height: 28px;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f2f2f2;
+    background-clip: content-box;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    border-radius: 0;
+    box-shadow: 0 0 0 0 #dfdfdf inset;
+    transition: border .4s ease 0s, box-shadow .4s ease 0s; }
+    exa-switch .switcher.active {
+      transition: border .4s ease 0s, box-shadow .4s ease 0s, background-color 1.2s ease 0s; }
+      exa-switch .switcher.active .switch {
+        left: calc((62px / 2) - (1px * 2)); }
+  exa-switch input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 62px;
+    height: 28px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0; }
+  exa-switch .switch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(62px / 2);
+    height: calc(28px - (1px * 2));
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: left .2s ease 0s; }
+  exa-switch .switcher:focus .switch {
+    animation: switchPulseAnimation 1.5s infinite; }
+  exa-switch input:checked {
+    z-index: 0; }
+  exa-switch .switcher-labels {
+    position: relative; }
+    exa-switch .switcher-labels span {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      color: #434A54;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .2s ease-in-out; }
+      exa-switch .switcher-labels span.active {
+        visibility: visible;
+        opacity: 1;
+        transition: all .2s ease-in-out; }
+
+exa-switch[type='primary'] .switcher.active {
+  background-color: #10467d;
+  border-color: #10467d;
+  box-shadow: 0 0 0 calc(28px / 2) #10467d inset; }
+
+exa-switch[type='secondary'] .switcher.active {
+  background-color: #464a4e;
+  border-color: #464a4e;
+  box-shadow: 0 0 0 calc(28px / 2) #464a4e inset; }
+
+exa-switch[type='success'] .switcher.active {
+  background-color: #1a6d4e;
+  border-color: #1a6d4e;
+  box-shadow: 0 0 0 calc(28px / 2) #1a6d4e inset; }
+
+exa-switch[type='warning'] .switcher.active {
+  background-color: #82532f;
+  border-color: #82532f;
+  box-shadow: 0 0 0 calc(28px / 2) #82532f inset; }
+
+exa-switch[type='danger'] .switcher.active {
+  background-color: #7d2a39;
+  border-color: #7d2a39;
+  box-shadow: 0 0 0 calc(28px / 2) #7d2a39 inset; }
+
+@keyframes switchPulseAnimation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.55); }
+  70% {
+    box-shadow: 0 0 0 10px rgba(66, 133, 244, 0); }
+  100% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); } }
