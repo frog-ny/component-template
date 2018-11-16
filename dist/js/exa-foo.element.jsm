@@ -64,6 +64,4 @@ class Foo extends HTMLElement {
 
 customElements.define('exa-foo', Foo);
 
-
-
 export default Foo

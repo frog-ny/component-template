@@ -46,6 +46,8 @@ class DropdownElement extends HTMLBaseElement {
         }
       });
     });
+  
+    this.parsed = true;
   }
 
   /* Lifecycle, element removed from the DOM */
