@@ -4,6 +4,10 @@
   "description": "",
   "main": "src/exa-sample.element.js",
   "scripts": {
+    "clean": "rm -rf dist && mkdir dist && mkdir dist/css && mkdir dist/js",
+    "sass": "npm run sass:lint && npm run sass:compile",
+    "sass:compile": "node ./tasks/sass.js",
+    "sass:lint": "stylelint './src/**/*.scss'; exit 0",
     "test": "gulp test",
     "build": "gulp",
     "deploy": "gulp deploy"
@@ -35,6 +39,9 @@
   },
   "homepage": "",
   "devDependencies": {
+    "node-sass": "^4.10.0",
+    "parallelshell": "^3.0.2",
+    "stylelint": "^9.8.0",
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
     "babel-cli": "^6.26.0",
@@ -57,7 +64,6 @@
     "gulp-stylelint": "^8.0.0",
     "require-dir": "^1.1.0",
     "run-sequence": "^2.2.1",
-    "stylelint": "^9.8.0",
     "stylelint-scss": "^3.4.0"
   },
   "dependencies": {
