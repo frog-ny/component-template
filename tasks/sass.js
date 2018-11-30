@@ -1,5 +1,6 @@
 var sass = require('node-sass');
 var fs = require('fs');
+var colors = require('colors');
 
 const PACKAGE_NAME = process.env.npm_package_name;
 const PACKAGE_VERSION = process.env.npm_package_version;
@@ -21,12 +22,12 @@ function compileSass(options = {}) {
 
   // write the result to file
   var output = (isCompressed ? '' : '/* '+ PACKAGE_NAME +' version '+ PACKAGE_VERSION +' */\n') + result.css;
-  var dest = 'dist/css/' + COMPONENT_NAME + (isCompressed ? '.min' : '') + '.css';
+  var dest = 'dist/css/exa-' + COMPONENT_NAME + (isCompressed ? '.min' : '') + '.css';
   fs.writeFile(dest, output, (err) => {
-    if (err) console.log('Error:', err);
+    if (err) console.log(err.red);
   });
   // log successful compilation to terminal
-  console.log(' ' + dest + ' built.');
+  console.log((' ' + dest + ' compiled.').green);
 };
 
 // Expanded

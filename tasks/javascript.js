@@ -1,6 +1,7 @@
 var UglifyJS = require("uglify-es");
 var babel = require("@babel/core");
 var fs = require('fs');
+var colors = require('colors');
 
 const PACKAGE_NAME = process.env.npm_package_name;
 const PACKAGE_VERSION = process.env.npm_package_version;
@@ -11,14 +12,22 @@ function getExtension(filename) {
   return (i < 0) ? '' : filename.substr(i);
 }
 
-function isJSFile(filename) {
-  return getExtension(filename) === '.js';
+function saveFile(path, data) {
+  fs.writeFile(path, data, (err) => {
+    if (err) console.log(err.red);
+  });
+  // log successful compilation to terminal
+  console.log((path + ' built.').green);
 }
 
 fs.readdir('./src', function(err, filenames) {
   if (err)
-    console.log(err);
-  filenames = filenames.filter(isJSFile);
+    console.log(err.red);
+  // filter no .js files
+  filenames = filenames.filter(function(filename){
+    return getExtension(filename) === '.js';
+  });
+  // loop through all .js files
   filenames.map(filename => {
     var file = fs.readFileSync('src/' + filename, 'utf8');
     // append version
@@ -26,24 +35,18 @@ fs.readdir('./src', function(err, filenames) {
     var output = '/* ' + PACKAGE_NAME + ' version ' + PACKAGE_VERSION + ' */\n' + file;
     var dest = './dist/js/';
     // copy over
-    fs.writeFile(dest + filename + '.js', output, (err) => {
-      if (err) console.log('Error:', err);
-    });
+    saveFile(dest + filename + '.js', output);
     // minify
     var minifiedFile = UglifyJS.minify(output);
     if (minifiedFile.error) {
       console.log(minifiedFile.error);
     }
-    fs.writeFile(dest + filename + '.min.js', minifiedFile.code, (err) => {
-      if (err) console.log('Error:', err);
-    });
+    saveFile(dest + filename + '.min.js', minifiedFile.code);
     // legacy
     var legacyFile = babel.transformSync(output, {
       filename,
       babelrc: true,
     });
-    fs.writeFile(dest + filename + '.legacy.js', legacyFile.code, (err) => {
-      if (err) console.log('Error:', err);
-    });
+    saveFile(dest + filename + '.legacy.js', legacyFile.code);
   });
 });
