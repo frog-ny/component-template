@@ -1,6 +1,6 @@
-// Requirements
 var sass = require('node-sass');
 var fs = require('fs');
+
 const PACKAGE_NAME = process.env.npm_package_name;
 const PACKAGE_VERSION = process.env.npm_package_version;
 const COMPONENT_NAME = PACKAGE_NAME.replace("@exa/", "");

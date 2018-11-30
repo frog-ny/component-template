@@ -5,10 +5,11 @@
 .svn
 CVS
 
-*.log
 node_modules
-bower_components
+*.log
 .tmp
+/tmp
+.aws
 
 # project specific
 .env
