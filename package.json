@@ -64,6 +64,6 @@
     "uglify-es": "^3.3.9"
   },
   "dependencies": {
-    "@exa/common": "^0.10.1"
+    "@exa/common": "^0.12.0"
   }
 }
