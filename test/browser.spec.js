@@ -1,190 +1,102 @@
-describe('Browser tests',function(){
-  // let page;
-  // let loader;
-  //
-  // let loadedImage;
-  // let loadedArray = [];
-  // let errorArray = [];
-  // let completed = false;
-  //
-  // const SELECTOR = '#loader';
-  //
-  // function listenFor(type) {
-  //   return page.evaluateOnNewDocument(type => {
-  //     document.addEventListener(type, e => {
-  //       window.onCustomEvent({type, detail: e.detail});
-  //     });
-  //   }, type);
-  // }
-  //
-  // async function pause(duration){
-  //   return new Promise(resolve => setTimeout(resolve, duration));
-  // }
-  //
-  // before (async function () {
-  //   page = await browser.newPage();
-  //   await listenFor('ui.error.image-loader');
-  //   await listenFor('ui.load.image-loader');
-  //   await listenFor('ui.complete.image-loader');
-  //   await page.goto('http://localhost:3000/test',{waitUntil: 'domcontentloaded'});
-  //   await page.exposeFunction('onCustomEvent', e => {
-  //     //console.log(`${e.type} fired`, e.detail || '');
-  //     //console.log('image ',e.detail.image);
-  //     if(e.type === 'ui.load.image-loader' && e.detail.image){
-  //       loadedImage = e.detail.image;
-  //       loadedArray.push(e.detail.image);
-  //     }
-  //     if(e.type === 'ui.error.image-loader'){
-  //       errorArray.push(e.detail.image);
-  //     }
-  //     if(e.type === 'ui.complete.image-loader'){
-  //       completed = true;
-  //     }
-  //   })
-  //
-  //   beforeEach(function(){
-  //
-  //     page.evaluate((str) => {
-  //       var loader = document.getElementById('loader');
-  //       loader.clear();
-  //     },'');
-  //
-  //     loadedArray = [];
-  //     errorArray = [];
-  //     completed = false;
-  //
-  //   });
-  //
-  //   page.on('console', msg => {
-  //     for (let i = 0; i < msg.args().length; ++i)
-  //       console.log(`${i}: ${msg.args()[i]}`);
-  //   });
-  // })
-  //
-  // after (async function () {
-  //   await page.close();
-  // })
-  //
-  // it('should have aria-hidden set to true', async function(){
-  //   await page.waitFor(SELECTOR);
-  //   var hidden = await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     return loader.getAttribute('aria-hidden');
-  //   },'');
-  //   await pause(300);
-  //   expect(hidden).to.equal('true');
-  // })
-  //
-  // it('should load a single image passed to the data-images attribute', async function(){
-  //   var images = ['images/file-exists.png'];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(images.join(',')).to.equal(loadedImage);
-  // })
-  //
-  // it('should be able to load a single image via .push()', async function(){
-  //   var images = ['images/push/push.png'];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.push(str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(images.join(',')).to.equal(loadedArray.join(','));
-  // })
-  //
-  // it('should be able to load a single image via .unshift()', async function(){
-  //   var images = ['images/push/unshift.png'];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.unshift(str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(images.join(',')).to.equal(loadedArray.join(','));
-  // })
-  //
-  // it('should load a comma separated list of images passed to the data-images attribute', async function(){
-  //   var images = [
-  //     'images/image-list-01.png',
-  //     'images/image-list-02.png'
-  //   ];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(images.join(',')).to.equal(loadedArray.join(','));
-  // })
-  //
-  // it('should be able to load multiple image types', async function(){
-  //   var images = [
-  //     'images/mixed-image-formats/file.svg',
-  //     'images/mixed-image-formats/file.gif',
-  //     'images/mixed-image-formats/file.png',
-  //     'images/mixed-image-formats/file.jpg'
-  //   ];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(images.join(',')).to.equal(loadedArray.join(','));
-  // })
-  //
-  // it('should dispatch a CustomEvent when the queue is complete', async function(){
-  //   var images = [
-  //     'images/complete-event/image-01.png',
-  //     'images/complete-event/image-02.png',
-  //     'images/complete-event/image-03.png'
-  //   ];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(completed).to.equal(true);
-  // })
-  //
-  // it('should continue loading if a missing image is added to the beginning of the list', async function(){
-  //   var images = [
-  //     'images/start-with-missing-image/image-DOES-NOT-EXIST.png',
-  //     'images/start-with-missing-image/image-01.png',
-  //     'images/start-with-missing-image/image-02.png',
-  //     'images/start-with-missing-image/image-03.png'
-  //   ];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(loadedArray.length).to.equal(3);
-  // })
-  //
-  // it('should continue loading if multiple missing images are added to the middle of the list', async function(){
-  //   var images = [
-  //     'images/missing-middle-images/image-01.png',
-  //     'images/missing-middle-images/image-02.png',
-  //     'missing.png',
-  //     'nope.png',
-  //     'images/missing-middle-images/image-03.png',
-  //     'images/missing-middle-images/image-04.png'
-  //   ];
-  //   await page.waitFor(SELECTOR);
-  //   await page.evaluate((str) => {
-  //     var loader = document.getElementById('loader');
-  //     loader.setAttribute('data-images',str);
-  //   },images.join(','));
-  //   await pause(300);
-  //   expect(loadedArray.length).to.equal(4);
-  // })
+describe('Example test',function(){
+
+  /* this will be a reference to the page we'll be testing on */
+  let page;
+
+  /* use this to capture custom events from the page */
+  let EVENTS = [];
+
+  const SELECTOR = '#exa-foo';
+
+  /* If you need to test for custom events
+   * this function adds an event listener to
+   * to the page which will call a custom function that
+   * mocha will handle.
+   */
+  function listenForCustomEvent(type) {
+    return page.evaluateOnNewDocument(type => {
+      document.addEventListener(type, e => {
+        window.onCustomEvent({type, detail: e.detail});
+      });
+    }, type);
+  }
+
+  /* a helper for putting a delay in a series of async calls. */
+  async function wait(duration){
+    return new Promise(resolve => setTimeout(resolve, duration));
+  }
+
+  /* this runs before all tests in the file. */
+  before (async function () {
+    page = await browser.newPage();
+    await listenForCustomEvent('foo');
+    await page.goto('http://localhost:3000/test',{waitUntil: 'domcontentloaded'});
+
+    /* here is where you capture the response
+     * from our the custom event handler you attached to the page
+     */
+    await page.exposeFunction('onCustomEvent', e => {
+      if(e.type === 'foo'){
+        EVENTS.push(e);
+      }
+    })
+
+    /*
+     * if you want to bubble console logs from Puppeteer to mocha
+    page.on('console', msg => {
+      for (let i = 0; i < msg.args().length; ++i)
+        console.log(`${i}: ${msg.args()[i]}`);
+    });
+    */
+
+  })
+
+  beforeEach(function(){
+
+    /*
+     * if you need to do DOM manipulation/cleanup before each test
+     */
+    page.evaluate((str) => {
+      // you're in the page now.
+      // var foo = document.getElementById('foo');
+    },'');
+
+    EVENTS = [];
+  })
+
+  /* this runs after all tests in the file. */
+  after (async function () {
+    await page.close();
+  })
+
+  /* this is a test */
+  it('should be able to select a DOM element ', async function(){
+
+    /* don't do anything until the page is loaded and puppeteer
+     * can find this selector
+     */
+    await page.waitFor(SELECTOR);
+
+    /* do something in the DOM and return a value to mocha */
+    var length = await page.evaluate((str) => {
+      var el = document.querySelectorAll('exa-foo');
+      return el.length;
+    },'');
+
+    /* await wait(300); <- don't need to wait for anything here. just an example */
+
+    /* tests end with a pass/fail assertion */
+    expect(length).to.equal(1);
+  })
+
+  /* you'd never write a test that fails intentionally.
+   * just demoing what happens if an assertion fails.
+   */
+  it('should fail', async function(){
+    expect('foo').to.not.equal('bar');
+    /* if you wanted this to pass you'd write
+     * expect('foo').to.not.equal('bar');
+     */
+  })
 
 });

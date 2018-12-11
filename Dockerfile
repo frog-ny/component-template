@@ -33,4 +33,4 @@ RUN chmod +x /usr/local/bin/dumb-init
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "build" ]
+CMD [ "/bin/bash" ]

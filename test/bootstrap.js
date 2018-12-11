@@ -11,16 +11,15 @@ const opts = {
   args: ['--no-sandbox', '--disable-setuid-sandbox']
 };
 
-// expose variables
+// this runs before all tests
 before (async function () {
   global.expect = expect;
   global.browser = await puppeteer.launch(opts);
 });
 
-// close browser and reset global variables
+// cleanup runs after all tests
 after (function () {
   browser.close();
-
   global.browser = globalVariables.browser;
   global.expect = globalVariables.expect;
 });
