@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/exa-foo.element.js",
   "scripts": {
-    "docker-image": "docker build --no-cache -t exa-image-test .",
-    "docker-container": "PORT=3000; VAR=$npm_package_name; STRIP_AT=${VAR/@exa/exa-}; CONTAINER=${STRIP_AT///}; docker run -it -d --name=$CONTAINER -p $PORT:3000 -v $(pwd):/www/ exa-image-test",
+    "docker-image": "docker build --no-cache -t exa-image .",
+    "docker-container": "PORT=3000; VAR=$npm_package_name; STRIP_AT=${VAR/@exa/exa-}; CONTAINER=${STRIP_AT///}; docker run -it -d --name=$CONTAINER -p $PORT:3000 -v $(pwd):/www/ exa-image",
     "docker-start": "VAR=$npm_package_name; STRIP_AT=${VAR/@exa/exa-}; CONTAINER=${STRIP_AT///}; docker start $CONTAINER && docker attach $CONTAINER",
     "build": "npm run clean && concurrently \"npm run js\" \"npm run sass\" && npm run size",
     "server": "http-server -c-1 -p 3000 . > http.log 2>&1 &",
