@@ -23,6 +23,23 @@ npm run deploy
 ```
 
 
+# Development
+#### Build the src files
+```
+npm run build
+```
+
+#### Watch file changes
+```
+npm run watch
+```
+
+#### Open Examples
+```
+[http://localhost:3001/examples/](http://localhost:3001/examples/)
+```
+
+
 # Notes
 
 ## configs &amp; dotfiles
