@@ -27,13 +27,18 @@ fs.readdir('./src', function(err, filenames) {
   filenames = filenames.filter(function(filename){
     return getExtension(filename) === '.js';
   });
+
+  var baseElFile = fs.readFileSync('node_modules/@exa/common/dist/js/exa-base-element.js', 'utf8') + '\n';
+  var dest = './dist/js/';
+
   // loop through all .js files
   filenames.map(filename => {
     var file = fs.readFileSync('src/' + filename, 'utf8');
-    // append version
     filename = filename.replace('.js', '');
+
+    // append version
     var output = '/* ' + PACKAGE_NAME + ' version ' + PACKAGE_VERSION + ' */\n' + file;
-    var dest = './dist/js/';
+
     // copy over
     saveFile(dest + filename + '.js', output);
     // minify
@@ -42,11 +47,24 @@ fs.readdir('./src', function(err, filenames) {
       console.log(minifiedFile.error);
     }
     saveFile(dest + filename + '.min.js', minifiedFile.code);
+
     // legacy
+    if(file.indexOf('extends HTMLBaseElement') > 0) {
+      output = '/* ' + PACKAGE_NAME + ' version ' + PACKAGE_VERSION + ' */\n' + baseElFile + file;
+    }
     var legacyFile = babel.transformSync(output, {
       filename,
       babelrc: true,
     });
     saveFile(dest + filename + '.legacy.js', legacyFile.code);
+    // minify
+    var minifiedFile = UglifyJS.minify(output);
+    if (minifiedFile.error) {
+      console.log(minifiedFile.error);
+    }
+    saveFile(dest + filename + '.legacy.min.js', minifiedFile.code);
+
+
   });
+
 });
