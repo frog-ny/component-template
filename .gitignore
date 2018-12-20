@@ -14,4 +14,3 @@ node_modules
 # project specific
 .env
 testing
-dist
